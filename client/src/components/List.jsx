@@ -4,7 +4,6 @@ import Category from './Category.jsx';
 const List = props => {
     let history = props.searchHistory;
 
-
     const item = history.map((item, i) => {
       return(
           <option value={item} key={i}/>

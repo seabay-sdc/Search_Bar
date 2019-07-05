@@ -1,6 +1,5 @@
 import React from 'react';
 import List from './List.jsx';
-import Category from './Category.jsx';
 const axios = require('axios');
 
 class SearchBar extends React.Component {
@@ -43,7 +42,9 @@ class SearchBar extends React.Component {
     
       let searchHistory = [];
       for (let packet of response.data) {
-        searchHistory.push(packet.searchterm);
+        if (packet.searchterm !== '')  {
+          searchHistory.push(packet.searchterm);
+        }
       }
       console.log(searchHistory);
       this.setState({ searchHistory })
@@ -59,24 +60,6 @@ class SearchBar extends React.Component {
   render () {
     return (<div>
       <h1>Whatchya want?</h1>
-
-      {/* <form action="/action_page.php" onSubmit={this.submitSearch}> */}
-      
-      {/* <form onSubmit={this.submitSearch}>
-      <input list="browsers" type="text" value={this.state.searchedName} onChange={this.handleChange}/>
-      <datalist id="history">
-      <option value="Internet Explorer"/>
-      <option value="Firefox"/>
-      <option value="Chrome"/>
-      <option value="Opera"/>
-      <option value="Safari"/>
-      </datalist> 
-      <button type="submit" onClick={this.submitSearch}>Get it!</button>
-      </form>
-
-      <input type="text" value={this.state.searchedName} onChange={this.handleChange} />
-      <Category />
-      <button type="submit" onClick={this.submitSearch}>Get it!</button> */}
       <List 
         searchHistory={this.state.searchHistory} 
         handleChange={this.handleChange}

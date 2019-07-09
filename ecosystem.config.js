@@ -7,7 +7,7 @@ module.exports = {
       production: {
         user: 'ubuntu',
         host: 'ec2-3-17-68-248.us-east-2.compute.amazonaws.com',
-        key: '~/.ssh/FEC.pem',
+        key: '~/.ssh/Search_Bar.pem',
         ref: 'origin/master',
         repo: 'https://github.com/seabay-hratx42-fec/Search_Bar.git',
         path: '/home/ubuntu/Search_Bar',

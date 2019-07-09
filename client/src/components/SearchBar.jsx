@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
       searchHistory: [],
       recent: [],
       itemId: null
-    }  
+    } 
     this.handleChange = this.handleChange.bind(this);
     this.submitSearch = this.submitSearch.bind(this);
   }

@@ -17,25 +17,27 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
   }
 });
 }
+const getAll = (callback) => {
+  connection.query(`SELECT searchterm FROM searchterms;`, (err, results) => {
+    if (err) {console.error(err)}
+    else {
+      //console.log("here is the whole table : ", results);
+      callback(results);
+    }
+  })
+}
 
 const search = (searchterm, callback) => {
-  console.log("searchterm in database index is : ", searchterm);
-  connection.query(`INSERT INTO searchterms (searchterm) VALUES ("${searchterm}")`, (error, results) => {
+  console.log("searchterm  is : ", searchterm);
+  connection.query(`SELECT id FROM searchterms WHERE searchterm = ("${searchterm}")`, (error, result) => {
     if (error) {throw(error);}
     else {
-    console.log("insert into db success");
-    }
-  } 
-  )
-  connection.query(`SELECT * FROM searchterms;`, (err, results) => {
-    if (err) {throw(err)}
-    else {
-      console.log("here is the whole table : ", results);
-      callback(results);
+    console.log("index of "  + searchterm + " is " + result);
+    callback(result)
     }
   })
 }
 
 
 
-module.exports = { search, test };
+module.exports = { search, test, getAll };

@@ -13,7 +13,21 @@ app.use(express.static('./client/dist'))
 
 app.get('/', (req, res) => {
   db.test();
-  res.status(200).send('Get request successful!');
+  console.log('getting ...')
+  // db.getAll((results) => {
+  //   console.log("app.get db.getAll reuslts are : ", results);
+  //   //res.send(results);
+  // })
+  //res.status(200).send(results);
+});
+
+app.get('/getall', (req, res) => {
+  console.log('getting ...')
+  db.getAll((results) => {
+    //console.log("app.get db.getAll reuslts are : ", results);
+    res.send(results);
+  })
+  //res.status(200).send(results);
 });
 
 app.post('/search', (req, res) => {
@@ -24,7 +38,7 @@ app.post('/search', (req, res) => {
     //   res.send("error");
     // }
     // else {
-      console.log(results);
+      console.log("server results are : ", results);
       res.send(results);
     }
   //}

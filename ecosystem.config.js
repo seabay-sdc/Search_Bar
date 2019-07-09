@@ -1,6 +1,6 @@
 module.exports = {
     apps: [{
-      name: 'SearchBar',
+      name: 'Search_Bar',
       script: './server.server.js'
     }],
     deploy: {

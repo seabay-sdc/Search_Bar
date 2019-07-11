@@ -1,6 +1,6 @@
 module.exports = {
     apps: [{
-      name: 'SearchBar',
+      name: 'searchbar',
       script: './server.server.js'
     }],
     deploy: {
@@ -10,7 +10,7 @@ module.exports = {
         key: '~/.ssh/FEC.pem',
         ref: 'origin/master',
         repo: 'https://github.com/seabay-hratx42-fec/Search_Bar.git',
-        path: '/home/ubuntu/SearchBar',
+        path: '/home/ubuntu/searchbar',
         'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
       }
     }

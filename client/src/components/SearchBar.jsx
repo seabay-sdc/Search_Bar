@@ -78,7 +78,6 @@ class SearchBar extends React.Component {
 
   render () {
     return (<div>
-      <h1>Whatchya want?</h1>
       <List 
         searchHistory={this.state.searchHistory} 
         handleChange={this.handleChange}

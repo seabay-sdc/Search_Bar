@@ -1,10 +1,12 @@
 import React from 'react';
+import  DropdownButton  from 'react-bootstrap/DropdownButton';
+import  Dropdown  from 'react-bootstrap/Dropdown';
 
 const Category = (props) => {
 
-    return (
-        <select id="pet-select">
-        <option value="">* Pick a Category *</option>
+    return (<>
+      <select id="pet-select">
+        <option value="All Categories">All Categories</option>
         <option value="Antiques">Antiques</option>
         <option value="Art">Art</option>
         <option value="Baby">Baby</option>
@@ -40,7 +42,21 @@ const Category = (props) => {
         <option value="Travel">Travel</option> 
         <option value="Video Games & Consoles">Video Games & Consoles</option> 
     </select>
-        )
+
+    {/* <DropdownButton
+  alignRight
+  title="Dropdown right"
+  id="dropdown-menu-align-right"
+>
+  <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+  <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+  <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+  <Dropdown.Divider />
+  <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+</DropdownButton> */}
+
+
+        </>)
 }
 
 export default Category;

@@ -2,9 +2,9 @@ import React from 'react';
 
 const Category = (props) => {
 
-    return (
-        <select id="pet-select">
-        <option value="">* Pick a Category *</option>
+    return (<>
+      <select id="pet-select">
+        <option value="All Categories">All Categories</option>
         <option value="Antiques">Antiques</option>
         <option value="Art">Art</option>
         <option value="Baby">Baby</option>
@@ -40,7 +40,8 @@ const Category = (props) => {
         <option value="Travel">Travel</option> 
         <option value="Video Games & Consoles">Video Games & Consoles</option> 
     </select>
-        )
+
+        </>)
 }
 
 export default Category;

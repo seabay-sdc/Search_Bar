@@ -17,16 +17,16 @@ class SearchBar extends React.Component {
     this.setCurrentItem = this.setCurrentItem.bind(this);
   }
   componentDidMount() {
-    console.log('pinging')
-    this.pingServer()
-    this.seedHistory()
-    document.addEventListener("setCurrentItem", (id) => {
-      console.log('setCurrentItem: ', id);
-      const detail = { detail: id };
-      const event = new CustomEvent('setCurrentItem', detail);
-      console.log("the itemId is : ", this.state.itemId);
-      document.dispatchEvent(event);
-    });
+    //console.log('pinging')
+    //this.pingServer()
+    this.seedSearch()
+    // document.addEventListener("setCurrentItem", (id) => {
+    //   console.log('setCurrentItem: ', id);
+    //   const detail = { detail: id };
+    //   const event = new CustomEvent('setCurrentItem', detail);
+    //   console.log("the itemId is : ", this.state.itemId);
+    //   document.dispatchEvent(event);
+    // });
   }
 
   pingServer () {
@@ -42,7 +42,7 @@ class SearchBar extends React.Component {
       })
   }
 
-  seedHistory() {
+  seedSearch() {
     axios.get('/getall')
       .then((response) => {
         //console.log('the respsonse.data is : ', response.data)
@@ -55,6 +55,17 @@ class SearchBar extends React.Component {
       //console.log(searchHistory);
       this.setState({ searchHistory })
       })
+
+      .then(
+        document.addEventListener("setCurrentItem", (id) => {
+          //console.log('setCurrentItem: ', id);
+          const detail = { detail: id };
+          const event = new CustomEvent('setCurrentItem', detail);
+          console.log("the itemId is : ", this.state.itemId);
+          document.dispatchEvent(event);
+        })
+      )
+
       .catch((error) => {
         //console.log(error) //////GET RID OF ON THE CLIENT SIDE WHEN DONE!!!
       })

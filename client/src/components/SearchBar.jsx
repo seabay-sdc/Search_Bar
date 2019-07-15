@@ -14,11 +14,19 @@ class SearchBar extends React.Component {
     } 
     this.handleChange = this.handleChange.bind(this);
     this.submitSearch = this.submitSearch.bind(this);
+    this.setCurrentItem = this.setCurrentItem.bind(this);
   }
   componentDidMount() {
     console.log('pinging')
     this.pingServer()
     this.seedHistory()
+    document.addEventListener("setCurrentItem", (id) => {
+      console.log('setCurrentItem: ', id);
+      const detail = { detail: id };
+      const event = new CustomEvent('setCurrentItem', detail);
+      console.log("the itemId is : ", this.state.itemId);
+      document.dispatchEvent(event);
+    });
   }
 
   pingServer () {
@@ -37,14 +45,14 @@ class SearchBar extends React.Component {
   seedHistory() {
     axios.get('/getall')
       .then((response) => {
-        console.log('the respsonse.data is : ', response.data)
+        //console.log('the respsonse.data is : ', response.data)
         let searchHistory = [];
         for (let packet of response.data) {
           if (packet.searchterm !== '')  {
             searchHistory.push(packet.searchterm);
           }
         }
-      console.log(searchHistory);
+      //console.log(searchHistory);
       this.setState({ searchHistory })
       })
       .catch((error) => {
@@ -64,8 +72,11 @@ class SearchBar extends React.Component {
     })
     .then((response) => {
       console.log('the respsonse.data is : ', response.data[0].id)
-      this.setState({ itemId: response.data[0].id })
-      alert(this.state.itemId)
+      this.setState({ itemId: response.data[0].id - 1 })
+      alert(this.state.itemId);
+      this.setCurrentItem(this.state.itemId);
+      console.log("the itemId is : ", this.state.itemId);
+
     
   })
     .catch(error => console.error('uhoh error : ', error))
@@ -74,6 +85,14 @@ class SearchBar extends React.Component {
   handleChange (event) {
     this.setState({ searchingTerm : event.target.value })
     console.log(this.state.searchingTerm);
+  }
+
+  setCurrentItem (id) {
+    console.log('setCurrentItem: ', id);
+    const detail = { detail: id };
+    const event = new CustomEvent('setCurrentItem', detail);
+    console.log("the itemId is : ", this.state.itemId);
+    document.dispatchEvent(event);
   }
 
   render () {

@@ -3,7 +3,7 @@ import React from 'react';
 const Category = (props) => {
 
     return (<>
-      <select id="pet-select">
+      <select id="categories">
         <option value="All Categories">All Categories</option>
         <option value="Antiques">Antiques</option>
         <option value="Art">Art</option>

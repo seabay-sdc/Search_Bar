@@ -14,8 +14,18 @@ CREATE TABLE searchterms (
  *    mysql -u root < schema.sql
  *  to create the database and the tables.*/
 
+INSERT INTO searchterms (searchterm) VALUES ( "Moby Dick, or The Whale"); 
+INSERT INTO searchterms (searchterm) VALUES ( "The Old Man and The Sea");
+INSERT INTO searchterms (searchterm) VALUES ( "Twenty Thousand Leagues Under The Sea");
+INSERT INTO searchterms (searchterm) VALUES ( "Log From the Sea of Cortez");
+INSERT INTO searchterms (searchterm) VALUES ( "The Silent World");
+INSERT INTO searchterms (searchterm) VALUES ( "The Soul of an Octopus");
+INSERT INTO searchterms (searchterm) VALUES ( "The Reef");
+INSERT INTO searchterms (searchterm) VALUES ( "The Secret Life of Lobsters" );
+INSERT INTO searchterms (searchterm) VALUES ( "Treasure Island");
 INSERT INTO searchterms (searchterm) VALUES ( "Gulliver's Travels"); 
 INSERT INTO searchterms (searchterm) VALUES ("Life of Pi");
+INSERT INTO searchterms (searchterm) VALUES ("The Sea Around Us");
 INSERT INTO searchterms (searchterm) VALUES ("Jaws");
 INSERT INTO searchterms (searchterm) VALUES ("Animporphs: The Message");
 INSERT INTO searchterms (searchterm) VALUES ("The Seawolf");
@@ -27,6 +37,7 @@ INSERT INTO searchterms (searchterm) VALUES ("The Odyssey");
 INSERT INTO searchterms (searchterm) VALUES ('Vtg ROLOFF River Special R8 Small 8 # CAST IRON BOAT ANCHOR Kaukauna NICE PATINA');
 INSERT INTO searchterms (searchterm) VALUES ('Antique Fishermans Anchor Kedge Anchor Aprox 32" x 22" 13lbs');
 INSERT INTO searchterms (searchterm) VALUES ('Extreme Max Navy Anchor - 10 Ibs. Coated');
+
 INSERT INTO searchterms (searchterm) VALUES ('Danforth Utility Fluke Style Boat Marine Anchor Galvanized Seachoice 7E 41610');
 INSERT INTO searchterms (searchterm) VALUES ('Portable Folding 3lb Anchor Kit Canoe Kayak Raft Boat Sailboat Fishing Jet Ski');
 INSERT INTO searchterms (searchterm) VALUES ('Vintage Merriman Brothers Iron Kedge Anchor. Painted White.');
@@ -77,6 +88,13 @@ INSERT INTO searchterms (searchterm) VALUES ('MISSION BAY ~ SAN DIEGO, CALIFORNI
 INSERT INTO searchterms (searchterm) VALUES ('Diamond Head Lighthouse Beach Sand Sample');
 INSERT INTO searchterms (searchterm) VALUES ('Lot of 14 Sand Samples from Various Beaches in the Bahamas');
 INSERT INTO searchterms (searchterm) VALUES ('Lot of 34 Bulgaria Sand Beach Sample from Black sea 3 oz (86g) each bag');
+INSERT INTO searchterms (searchterm) VALUES ("Ireland Bundoran Sand Sample");
+INSERT INTO searchterms (searchterm) VALUES ("Alabama Dauphin Island Beach Sand Sample");
+INSERT INTO searchterms (searchterm) VALUES ("STAR SAND - JAPAN - RARE - TAKETOMI - BEACH SAND SAMPLE");
+INSERT INTO searchterms (searchterm) VALUES ("Magnetic BLACK SAND Sample Capistrano Beach, Dana Point, CA");
+INSERT INTO searchterms (searchterm) VALUES ("IXTAPA, MEXICO ~ BEACH SAND Sample");
+INSERT INTO searchterms (searchterm) VALUES ("Star Sand Okinawa Japan - star sand beach - Sand sample 50 grams (1.76 oz)");
+INSERT INTO searchterms (searchterm) VALUES ("CAPE COD, MASSACHUSETTS ~ BEACH SAND sample");
 INSERT INTO searchterms (searchterm) VALUES ('Deep Blue Sea DVD');
 INSERT INTO searchterms (searchterm) VALUES ('Little Mermaid II, The: Return to the Sea (DVD, 2008, Special Edition)');
 INSERT INTO searchterms (searchterm) VALUES ('By the Sea (DVD, 2016)');

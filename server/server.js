@@ -6,23 +6,23 @@ const app = express();
 const port = 3003;
 const db = require("../database-mysql/index.js")
 
-//app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('client/dist'))
 
-app.get('/', (req, res) => {
-  //db.test();
-  console.log('getting ...')
+// app.get('/', (req, res) => {
+//   //db.test();
+//   console.log('getting ...')
 
-  // db.getAll((results) => {
-  //   console.log("app.get db.getAll reuslts are : ", results);
-  //   //res.send(results);
-  // })
-  res.status(200).send("hello");
-});
+//   // db.getAll((results) => {
+//   //   console.log("app.get db.getAll reuslts are : ", results);
+//   //   //res.send(results);
+//   // })
+//   res.status(200).send("hello");
+// });
 
-app.get('/getall', (req, res) => {
+app.get('http://ec2-18-222-30-125.us-east-2.compute.amazonaws.com/getall', (req, res) => {
   console.log('getting ...')
   db.getAll((results) => {
     //console.log("app.get db.getAll reuslts are : ", results);

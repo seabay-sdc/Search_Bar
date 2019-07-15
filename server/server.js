@@ -22,7 +22,7 @@ app.use(express.static('client/dist'))
 //   res.status(200).send("hello");
 // });
 
-app.get('/getall', (req, res) => {
+app.get('http://ec2-18-222-30-125.us-east-2.compute.amazonaws.com/getall', (req, res) => {
   console.log('getting ...')
   db.getAll((results) => {
     //console.log("app.get db.getAll reuslts are : ", results);

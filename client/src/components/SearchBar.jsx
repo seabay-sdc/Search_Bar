@@ -17,33 +17,17 @@ class SearchBar extends React.Component {
     this.setCurrentItem = this.setCurrentItem.bind(this);
   }
   componentDidMount() {
-    //console.log('pinging')
-    //this.pingServer()
-    this.seedSearch()
-    // document.addEventListener("setCurrentItem", (id) => {
-    //   console.log('setCurrentItem: ', id);
-    //   const detail = { detail: id };
-    //   const event = new CustomEvent('setCurrentItem', detail);
-    //   console.log("the itemId is : ", this.state.itemId);
-    //   document.dispatchEvent(event);
-    // });
-  }
 
-  pingServer () {
-    axios.get('/')
-      .then((response) => {
-        console.log("response is : ", response);
-      })
-      .catch((error) => {
-        console.log(error) //////GET RID OF ON THE CLIENT SIDE WHEN DONE!!!
-      })
-      .finally(()=>{
-        console.log("succesfully pinged the server !!! :)")
-      })
+    this.seedSearch()
+
+    document.addEventListener("setCurrentItem", (event)=> {
+      console.log("event works")
+    });
+
   }
 
   seedSearch() {
-    axios.get('/getall')
+    axios.get('http://ec2-18-222-30-125.us-east-2.compute.amazonaws.com/getall')
       .then((response) => {
         //console.log('the respsonse.data is : ', response.data)
         let searchHistory = [];
@@ -52,22 +36,11 @@ class SearchBar extends React.Component {
             searchHistory.push(packet.searchterm);
           }
         }
-      //console.log(searchHistory);
       this.setState({ searchHistory })
       })
 
-      .then(
-        document.addEventListener("setCurrentItem", (id) => {
-          //console.log('setCurrentItem: ', id);
-          const detail = { detail: id };
-          const event = new CustomEvent('setCurrentItem', detail);
-          console.log("the itemId is : ", this.state.itemId);
-          document.dispatchEvent(event);
-        })
-      )
-
       .catch((error) => {
-        //console.log(error) //////GET RID OF ON THE CLIENT SIDE WHEN DONE!!!
+        console.log(error) //////GET RID OF ON THE CLIENT SIDE WHEN DONE!!!
       })
       .finally(()=>{
         console.log("succesfully got info from the database !!! :)")
@@ -77,7 +50,6 @@ class SearchBar extends React.Component {
   submitSearch(event) {
     event.preventDefault();
     this.setState({ searchedTerm: this.state.searchingTerm })
-
     axios.post('/search', {
        searchedTerm: this.state.searchingTerm
     })
@@ -86,10 +58,7 @@ class SearchBar extends React.Component {
       this.setState({ itemId: response.data[0].id - 1 })
       alert(this.state.itemId);
       this.setCurrentItem(this.state.itemId);
-      console.log("the itemId is : ", this.state.itemId);
-
-    
-  })
+    })
     .catch(error => console.error('uhoh error : ', error))
   }
 

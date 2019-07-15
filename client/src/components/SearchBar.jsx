@@ -2,6 +2,10 @@ import React from 'react';
 import List from './List.jsx';
 const axios = require('axios');
 
+const host = process.env.API_HOST;
+const port = process.env.API_PORT;
+const uri = `http://${host}:${port}`;
+
 class SearchBar extends React.Component {
   constructor (props) {
     super(props);
@@ -50,7 +54,7 @@ class SearchBar extends React.Component {
   submitSearch(event) {
     event.preventDefault();
     this.setState({ searchedTerm: this.state.searchingTerm })
-    axios.post('/search', {
+    axios.post('http://ec2-18-222-30-125.us-east-2.compute.amazonaws.com/search', {
        searchedTerm: this.state.searchingTerm
     })
     .then((response) => {

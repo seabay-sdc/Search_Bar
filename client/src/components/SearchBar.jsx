@@ -62,7 +62,7 @@ class SearchBar extends React.Component {
 
       //console.log('the respsonse.data is : ', response.data)
       this.setState({ itemId: response.data[0].id - 1 })
-      alert(this.state.itemId);
+      //alert(this.state.itemId);
       this.setCurrentItem(this.state.itemId);
     })
     .catch(error => console.error('uhoh error : ', error))

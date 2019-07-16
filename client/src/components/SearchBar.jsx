@@ -51,7 +51,7 @@ class SearchBar extends React.Component {
         console.log(error) //////GET RID OF ON THE CLIENT SIDE WHEN DONE!!!
       })
       .finally(()=>{
-        console.log("succesfully got info from the database !!! :)")
+        console.log("good job team !!! :)")
       })
   } 
 
@@ -63,9 +63,9 @@ class SearchBar extends React.Component {
        searchedTerm: this.state.searchingTerm
     })
     .then((response) => {
-      console.log('the respsonse.data is : ', response.data[0].id)
+      //console.log('the respsonse.data is : ', response.data[0].id)
       this.setState({ itemId: response.data[0].id - 1 })
-      alert(this.state.itemId);
+      //alert(this.state.itemId);
       this.setCurrentItem(this.state.itemId);
     })
     .catch(error => console.error('uhoh error : ', error))
@@ -73,21 +73,21 @@ class SearchBar extends React.Component {
 
   handleChange (event) {
     this.setState({ searchingTerm : event.target.value })
-    console.log(this.state.searchingTerm);
+    //console.log(this.state.searchingTerm);
   }
 
   setCurrentItem (Id) {
-    console.log('setCurrentItem: ', Id);
+    //console.log('setCurrentItem: ', Id);
     let id = {Id}
     const detail = { detail: id };
     const event = new CustomEvent('setCurrentItem', detail);
-    console.log("the itemId is : ", this.state.itemId);
+    //console.log("the itemId is : ", this.state.itemId);
     document.dispatchEvent(event);
   }
 
   setCategory (event){
     this.setState({ category : event.target.value })
-    console.log(this.state.category);
+    //console.log(this.state.category);
     if ('All Categories' === this.state.category){
       this.seedSearch();
     }
@@ -106,9 +106,6 @@ class SearchBar extends React.Component {
 
     .catch((error) => {
       console.log(error) //////GET RID OF ON THE CLIENT SIDE WHEN DONE!!!
-    })
-    .finally(()=>{
-      console.log("succesfully got info from the database !!! :)")
     })
 
   }

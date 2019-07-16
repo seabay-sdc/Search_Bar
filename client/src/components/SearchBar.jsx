@@ -64,8 +64,15 @@ class SearchBar extends React.Component {
       this.setState({ itemId: response.data[0].id - 1 })
       //alert(this.state.itemId);
       this.setCurrentItem(this.state.itemId);
+      this.setState({ searchingTerm:'' });
+      document.getElementById("input").value = '';
+      //this.refs.input.value = '';
     })
     .catch(error => console.error('uhoh error : ', error))
+    .finally(()=>{
+      this.setState({ searchingTerm:'' });
+      document.getElementById("input").value = '';
+    })
   }
 
   handleChange (event) {
@@ -103,6 +110,10 @@ class SearchBar extends React.Component {
 
     .catch((error) => {
       console.log(error) //////GET RID OF ON THE CLIENT SIDE WHEN DONE!!!
+    })
+    .finally(()=>{
+      this.setState({ searchingTerm:'' });
+      document.getElementById("input").value = '';
     })
 
   }

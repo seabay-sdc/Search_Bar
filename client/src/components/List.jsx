@@ -76,7 +76,7 @@ const List = props => {
 
     <form className="flex-container">
       <img src="https://seabay-logo.s3.us-east-2.amazonaws.com/New+Project+(1).png" className="flex-item"/>
-      <input list="things"  placeholder="Search for anything" onChange={props.handleChange} className="flex-item"/>
+      <input id="input" list="things"  placeholder="Search for anything" onChange={props.handleChange} className="flex-item"/>
       <datalist id="things" className="flex-item">
         {item}
       </datalist> 

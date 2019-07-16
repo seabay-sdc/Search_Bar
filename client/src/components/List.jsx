@@ -12,7 +12,7 @@ const List = props => {
 
     const item = history.map((item, i) => {
       return(
-          <option value={item} key={i}/>
+          <option value={item[0]} key={i}/>
       )
   });    
 

@@ -23,23 +23,23 @@ app.use(express.static('client/dist'))
 // });
 
 app.get('/getall', (req, res) => {
-  console.log('getting ...')
+  //console.log('getting ...')
   db.getAll((results) => {
-    console.log("app.get db.getAll reuslts are : ", results);
+    //console.log("app.get db.getAll reuslts are : ", results);
     res.send(results);
   })
   //res.status(200).send(results);
 });
 
 app.post('/search', (req, res) => {
-  console.log("****", req.body.searchedTerm);
+  //console.log("****", req.body.searchedTerm);
   db.search(req.body.searchedTerm , (results) => {
     // if (err) {
     //   console.log("err is : ", err);
     //   res.send("error");
     // }
     // else {
-      console.log("server results are : ", results);
+      //console.log("server results are : ", results);
       res.send(results);
     }
   //}

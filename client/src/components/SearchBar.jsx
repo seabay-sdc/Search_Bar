@@ -2,10 +2,6 @@ import React from 'react';
 import List from './List.jsx';
 const axios = require('axios');
 
-const host = process.env.API_HOST;
-const port = process.env.API_PORT;
-const uri = `http://${host}:${port}`;
-
 class SearchBar extends React.Component {
   constructor (props) {
     super(props);
@@ -28,7 +24,7 @@ class SearchBar extends React.Component {
     this.seedSearch()
 
     document.addEventListener("setCurrentItem", (event)=> {
-      console.log("event works")
+      console.log("setCurrentItem event works for searchbar")
     });
 
   }
@@ -63,9 +59,10 @@ class SearchBar extends React.Component {
        searchedTerm: this.state.searchingTerm
     })
     .then((response) => {
-      //console.log('the respsonse.data is : ', response.data[0].id)
+
+      //console.log('the respsonse.data is : ', response.data)
       this.setState({ itemId: response.data[0].id - 1 })
-      //alert(this.state.itemId);
+      alert(this.state.itemId);
       this.setCurrentItem(this.state.itemId);
     })
     .catch(error => console.error('uhoh error : ', error))

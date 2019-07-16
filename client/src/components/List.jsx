@@ -3,7 +3,12 @@ import Category from './Category.jsx';
 import { Button } from 'react-bootstrap';
 
 const List = props => {
-    let history = props.searchHistory;
+    let history;
+    if (props.filteredHistory === null || props.filteredHistory.length === 0) {
+      history = props.searchHistory;
+    } else {
+      history = props.filteredHistory;
+    }
 
     const item = history.map((item, i) => {
       return(
@@ -75,7 +80,9 @@ const List = props => {
       <datalist id="things" className="flex-item">
         {item}
       </datalist> 
-      <Category className="flex-item"/>
+      <Category className="flex-item" 
+        searchHistory={props.searchHistory}
+        setCategory={props.setCategory}/>
       <Button variant="flat" type="submit" onClick={props.submitSearch} className="flex-item">
         Search
       </Button>

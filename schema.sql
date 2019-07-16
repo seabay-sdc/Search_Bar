@@ -25,10 +25,9 @@ INSERT INTO searchterms (searchterm, category) VALUES ( "The Soul of an Octopus"
 INSERT INTO searchterms (searchterm, category) VALUES ( "The Reef", "Sea Books");
 INSERT INTO searchterms (searchterm, category) VALUES ( "The Secret Life of Lobsters", "Sea Books" );
 INSERT INTO searchterms (searchterm, category) VALUES ( "Treasure Island", "Sea Books");
-INSERT INTO searchterms (searchterm, category) VALUES ( "Gulliver's Travels", "Sea Books"); 
 
+INSERT INTO searchterms (searchterm, category) VALUES ( "Gulliver's Travels", "Sea Books"); 
 INSERT INTO searchterms (searchterm, category) VALUES ("Life of Pi", "Sea Books");
-INSERT INTO searchterms (searchterm, category) VALUES ("The Sea Around Us", "Sea Books");
 INSERT INTO searchterms (searchterm, category) VALUES ("Jaws", "Sea Books");
 INSERT INTO searchterms (searchterm, category) VALUES ("Animporphs: The Message", "Sea Books");
 INSERT INTO searchterms (searchterm, category) VALUES ("The Seawolf", "Sea Books");

@@ -11,7 +11,7 @@ module.exports = {
         ref: 'origin/master',
         repo: 'https://github.com/seabay-hratx42-fec/Search_Bar.git',
         path: '/home/ubuntu/searchbar',
-        'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
+        'post-deploy': 'npm install && npx webpack --config ./webpack.config.js && pm2 startOrRestart ecosystem.config.js'
       }
     }
   }

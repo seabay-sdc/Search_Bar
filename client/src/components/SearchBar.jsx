@@ -19,6 +19,8 @@ class SearchBar extends React.Component {
     this.setCurrentItem = this.setCurrentItem.bind(this);
     this.setCategory = this.setCategory.bind(this);
   }
+
+  
   componentDidMount() {
 
     this.seedSearch()

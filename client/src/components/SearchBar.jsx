@@ -73,10 +73,10 @@ class SearchBar extends React.Component {
     //console.log(this.state.searchingTerm);
   }
 
-  setCurrentItem (Id) {
+  setCurrentItem (id) {
     //console.log('setCurrentItem: ', Id);
-    let id = {Id}
-    const detail = { detail: id };
+    const itemId = {id}
+    const detail = { detail: itemId };
     const event = new CustomEvent('setCurrentItem', detail);
     //console.log("the itemId is : ", this.state.itemId);
     document.dispatchEvent(event);

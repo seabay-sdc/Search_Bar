@@ -13,12 +13,15 @@ class SearchBar extends React.Component {
       searchingTerm: '',
       searchedTerm: '',
       searchHistory: [],
+      filteredHistory: null,
       recent: [],
-      itemId: null
+      itemId: null,
+      category: 'All Categories'
     } 
     this.handleChange = this.handleChange.bind(this);
     this.submitSearch = this.submitSearch.bind(this);
     this.setCurrentItem = this.setCurrentItem.bind(this);
+    this.setCategory = this.setCategory.bind(this);
   }
   componentDidMount() {
 
@@ -32,12 +35,13 @@ class SearchBar extends React.Component {
 
   seedSearch() {
     axios.get('http://ec2-18-222-30-125.us-east-2.compute.amazonaws.com/getall')
+    //axios.get('/getall')
       .then((response) => {
         //console.log('the respsonse.data is : ', response.data)
         let searchHistory = [];
         for (let packet of response.data) {
           if (packet.searchterm !== '')  {
-            searchHistory.push(packet.searchterm);
+            searchHistory.push([packet.searchterm, packet.category]);
           }
         }
       this.setState({ searchHistory })
@@ -55,6 +59,7 @@ class SearchBar extends React.Component {
     event.preventDefault();
     this.setState({ searchedTerm: this.state.searchingTerm })
     axios.post('http://ec2-18-222-30-125.us-east-2.compute.amazonaws.com/search', {
+    //axios.post('/search', {
        searchedTerm: this.state.searchingTerm
     })
     .then((response) => {
@@ -71,12 +76,41 @@ class SearchBar extends React.Component {
     console.log(this.state.searchingTerm);
   }
 
-  setCurrentItem (id) {
-    console.log('setCurrentItem: ', id);
+  setCurrentItem (Id) {
+    console.log('setCurrentItem: ', Id);
+    let id = {Id}
     const detail = { detail: id };
     const event = new CustomEvent('setCurrentItem', detail);
     console.log("the itemId is : ", this.state.itemId);
     document.dispatchEvent(event);
+  }
+
+  setCategory (event){
+    this.setState({ category : event.target.value })
+    console.log(this.state.category);
+    if ('All Categories' === this.state.category){
+      this.seedSearch();
+    }
+    //axios.get('/getall')
+    axios.get('http://ec2-18-222-30-125.us-east-2.compute.amazonaws.com/getall')
+    .then((response) => {
+      //console.log('the respsonse.data is : ', response.data)
+      let filteredHistory = [];
+      for (let packet of response.data) {
+        if (packet.category === this.state.category)  {
+          filteredHistory.push([packet.searchterm, packet.category]);
+        }
+      }
+    this.setState({ filteredHistory })
+    })
+
+    .catch((error) => {
+      console.log(error) //////GET RID OF ON THE CLIENT SIDE WHEN DONE!!!
+    })
+    .finally(()=>{
+      console.log("succesfully got info from the database !!! :)")
+    })
+
   }
 
   render () {
@@ -84,7 +118,10 @@ class SearchBar extends React.Component {
       <List 
         searchHistory={this.state.searchHistory} 
         handleChange={this.handleChange}
-        submitSearch={this.submitSearch}/>
+        submitSearch={this.submitSearch}
+        setCategory={this.setCategory}
+        filteredHistory={this.state.filteredHistory}
+        />
       </div>
     );
   }

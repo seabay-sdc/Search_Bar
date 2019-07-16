@@ -25,7 +25,7 @@ app.use(express.static('client/dist'))
 app.get('/getall', (req, res) => {
   console.log('getting ...')
   db.getAll((results) => {
-    //console.log("app.get db.getAll reuslts are : ", results);
+    console.log("app.get db.getAll reuslts are : ", results);
     res.send(results);
   })
   //res.status(200).send(results);

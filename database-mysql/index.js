@@ -20,10 +20,10 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
 });
 }
 const getAll = (callback) => {
-  connection.query(`SELECT searchterm FROM searchterms;`, (err, results) => {
+  connection.query(`SELECT * FROM searchterms;`, (err, results) => {
     if (err) {console.error(err)}
     else {
-      //console.log("here is the whole table : ", results);
+      console.log("here is the whole table : ", results);
       callback(results);
     }
   })

@@ -79,6 +79,9 @@ class SearchBar extends React.Component {
 
   handleChange (event) {
     this.setState({ searchingTerm : event.target.value })
+    if (event.keyValue === "Enter"){
+      submitSearch();
+    }
     //console.log(this.state.searchingTerm);
   }
 

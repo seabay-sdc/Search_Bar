@@ -34,7 +34,7 @@ const List = props => {
     }
 
    #bigBtn {
-      background-color: #0065D2;
+      background-color: #0065D2; 
       color: white;
       font-size: .8rem;
       text-align: center;

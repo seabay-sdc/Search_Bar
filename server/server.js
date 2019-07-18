@@ -11,21 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('client/dist'))
 
-app.get('/', (req, res) => {
-  //db.test();
-  console.log('getting ...')
-
-  // db.getAll((results) => {
-  //   console.log("app.get db.getAll reuslts are : ", results);
-  //   //res.send(results);
-  // })
-  db.getAll((results) => {
-    //console.log("app.get db.getAll reuslts are : ", results);
-    res.send(results);
-  })
-  res.status(200).send("hello");
-});
-
 app.get('/getall', (req, res) => {
   //console.log('getting ...')
   db.getAll((results) => {

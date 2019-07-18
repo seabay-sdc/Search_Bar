@@ -151,7 +151,7 @@ const List = props => {
     height: 40px;
     fontsize 1em;
     order: 0;
-    flex: 1 0 100%;
+    flex: 1 0 90%;
     align-self: center;
     font: 400 20px system-ui;
     }

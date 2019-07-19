@@ -199,7 +199,7 @@ div {
 
     <form className="flex-container" onSubmit={props.submitSearch} action=".">
       <img src="https://seabay-logo.s3.us-east-2.amazonaws.com/New+Project+(1).png" className="flex-item"/>
-      <input id="input" list="things"  placeholder="&#128269; Search for anything" onChange={props.handleChange} className="flex-item" type="search" onsearch={props.submitSearch}/>
+      <input id="input" list="things"  placeholder="&#128269; Search for anything" onChange={props.handleChange} className="flex-item" type="search" onsearch={props.submitSearch} onSubmit={props.submitSearch}/>
       <datalist id="things">
         {item}
       </datalist> 

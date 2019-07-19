@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const port = 3003;
-const db = require("../database-mysql/index.js")
+const db = require("../database-mysql/index.js");
 
 app.use(cors());
 app.use(express.json());
@@ -22,16 +22,16 @@ app.get('/getall', (req, res) => {
 
 app.post('/search', (req, res) => {
   //console.log("****", req.body.searchedTerm);
-  db.search(req.body.searchedTerm , (results) => {
+  db.fuzzySearch(req.body.searchedTerm , (results) => {
     // if (err) {
     //   console.log("err is : ", err);
     //   res.send("error");
     // }
     // else {
-      //console.log("server results are : ", results);
+      console.log("server results are : ", results);
+      results = results.toString()
       res.send(results);
-    }
-  //}
+    } 
    ) 
 })
 

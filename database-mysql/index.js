@@ -1,15 +1,13 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 require('dotenv').config();
+const fuz = require('fuzzy-search');
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: "UCF3xS2wjC"
-  //database: 'fec'
-  //multipleStatements: true
 });
-
 
 const test = () => {
 connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
@@ -40,6 +38,23 @@ const search = (searchterm, callback) => {
   })
 }
 
+const fuzzySearch = (searchterm, callback) => {
+  console.log("searchterm  is : ", searchterm);
+  connection.query(`SELECT searchterm FROM searchterms;`, (error, result) => {
+    if (error) throw(error);
+    else {
+      const fuzzy = new fuz(result, ['searchterm'], {
+        caseSensitive: false,
+        sort: true,
+      });
+      const fuzzyResult = fuzzy.search(searchterm);
+      console.log("fuzzyResult[0].searchterm", fuzzyResult[0]);
+      callback(result.indexOf(fuzzyResult[0]))
+    }
+  });
+}
 
 
-module.exports = { search, test, getAll };
+
+module.exports = { search, test, getAll, fuzzySearch };
+

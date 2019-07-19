@@ -62,9 +62,13 @@ class SearchBar extends React.Component {
     })
     .then((response) => {
 
-      //console.log('the respsonse.data is : ', response.data)
-      this.setState({ itemId: response.data[0].id - 1 })
+      console.log('the respsonse.data is : ', response.data)
+      //this.setState({ itemId: response.data[0].id - 1 })
       //alert(this.state.itemId);
+      console.log(response.data);
+      this.setState({ itemId: response.data})
+
+
       this.setCurrentItem(this.state.itemId);
       this.setState({ searchingTerm:'' });
       document.getElementById("input").value = '';
@@ -78,9 +82,11 @@ class SearchBar extends React.Component {
   }
 
   handleChange (event) {
+    
     this.setState({ searchingTerm : event.target.value })
     if (event.keyValue === "Enter"){
-      submitSearch();
+      event.preventDefault();
+      this.submitSearch();
     }
     //console.log(this.state.searchingTerm);
   }

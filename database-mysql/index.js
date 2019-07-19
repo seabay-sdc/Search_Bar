@@ -1,8 +1,8 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 require('dotenv').config();
-var fuz = require('fuzzy-search');
+const fuz = require('fuzzy-search');
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
@@ -43,7 +43,7 @@ const fuzzySearch = (searchterm, callback) => {
   connection.query(`SELECT searchterm FROM searchterms;`, (error, result) => {
     if (error) throw(error);
     else {
-      var fuzzy = new fuz(result, ['searchterm'], {
+      const fuzzy = new fuz(result, ['searchterm'], {
         caseSensitive: false,
         sort: true,
       });

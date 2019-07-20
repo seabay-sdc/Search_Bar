@@ -21,7 +21,7 @@ const getAll = (callback) => {
   connection.query(`SELECT * FROM searchterms;`, (err, results) => {
     if (err) {console.error(err)}
     else {
-      console.log("here is the whole table : ", results);
+      //console.log("here is the whole table : ", results);
       callback(results);
     }
   })
@@ -39,7 +39,7 @@ const search = (searchterm, callback) => {
 }
 
 const fuzzySearch = (searchterm, callback) => {
-  console.log("searchterm  is : ", searchterm);
+  //console.log("searchterm  is : ", searchterm);
   connection.query(`SELECT searchterm FROM searchterms;`, (error, result) => {
     if (error) throw(error);
     else {
@@ -48,7 +48,7 @@ const fuzzySearch = (searchterm, callback) => {
         sort: true,
       });
       const fuzzyResult = fuzzy.search(searchterm);
-      console.log("fuzzyResult[0].searchterm", fuzzyResult[0]);
+      console.log("fuzzyResult : ", fuzzyResult);
       callback(result.indexOf(fuzzyResult[0]))
     }
   });

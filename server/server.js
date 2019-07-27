@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('client/dist'))
 
 app.get('/getall', (req, res) => {
-  //console.log('getting ...')
+  console.log('getting ...')
   db.getAll((results) => {
     //console.log("app.get db.getAll reuslts are : ", results);
     res.send(results);

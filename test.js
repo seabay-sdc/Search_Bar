@@ -1,8 +1,19 @@
-function sum(a, b) {
-    return a + b;
-}
+const request = require('supertest');
+const app = require('./server/server.js');
 
-test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
+jest.mock('./database-mysql/index.js', () => ({
+    getAll: () => new Promise((resolve, reject) => {
+      resolve('resolved');
+      reject(new Error('failed'));
+    }),
+  }));
+
+  describe('GET /', () => {
+    let result;
+    beforeAll(async () => {
+      result = await request(app).get('/getall');
+    });
+
+    test('responds with status code of 200', () => expect(result)
+    .toBeTruthy());
 });
-

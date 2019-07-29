@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 const port = 3003;
 const db = require("../database-mysql/index.js");
+const mdb = require("../database-mongodb/index.js");
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +20,19 @@ app.get('/getall', (req, res) => {
   })
   //res.status(200).send(results);
 });
+
+app.get('/getone', (req, res) => {
+  console.log('getting one from MongoDB');
+  mdb.getOne()
+  .then((results) => {
+    console.log(results);
+    res.send(results);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.send();
+  })
+})
 
 app.post('/search', (req, res) => {
   //console.log("****", req.body.searchedTerm);

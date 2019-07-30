@@ -13,10 +13,10 @@ const getOne = () => {
  return dbo.collection("seabayItems").findOne({"_id": 5})
 };
 
-const getEverything = () => {
+const getAll = () => {
   console.log('everything will be mine');
   return dbo.collection("seabayItems").find()
 };
 
 
-module.exports = { getOne, getEverything }
+module.exports = { getOne, getAll }

@@ -11,9 +11,12 @@ const connecting = () => {
 }
 connecting();
 
-const snag =  (id) => {
+const snag = async (id) => {
   console.log(`we're attempting to get in there at postgres`)
-  cl.query(`SELECT * FROM seabayItems where _id = ${id};`);
+  const query = await cl.query(`SELECT * FROM seabayItems where _id = ${id};`);
+  return new Promise ((resolve, reject) => {
+    resolve(query);
+  });
 }
 
 
